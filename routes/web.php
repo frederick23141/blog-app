@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 //las rutas deben ser en orden evaluadas en orden lineal
 
-Route::get(uri: '/', action: function () {
-    return view('welcome');
-});
+//por controlador. clase y metodo
+Route::get(uri: '/', action: [HomeController::class, 'index']);
 
 Route::get(uri: '/posts', action: function () {
     return 'aca se muestran los posts';
