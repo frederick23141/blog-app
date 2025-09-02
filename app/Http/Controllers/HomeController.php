@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
-    public function index(){
-        return 'Hola desde el controlador';
+    //return view home from resource views/home.blade.php
+    public function __invoke(){
+        return view('home');
     }
 }
