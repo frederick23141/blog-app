@@ -1,7 +1,22 @@
- @props(['type' => 'info'])
+<?php
 
- @php
-     switch ($type) {
+namespace App\View\Components;
+
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
+
+class Alert2 extends Component
+{
+
+    public $class;
+    /**
+     * Create a new component instance.
+     */
+    public function __construct($type = 'info')
+    {
+        //
+         switch ($type) {
          case 'info':
              # code...
              $class = 'text-blue-800  bg-blue-50 dark:bg-gray-800 dark:text-blue-400';
@@ -25,8 +40,14 @@
          case 'default':
              $class = 'text-blue-800  bg-blue-50 dark:bg-gray-800 dark:text-blue-400';
      }
- @endphp
+     $this->class = $class;
+    }
 
- <div {{ $attributes->merge(['class' => 'p-4 text-sm rounded-lg' . $class]) }} role="alert">
-     <span class="font-medium">{{ $tittle ?? 'Info alert' }}</span> {{ $message }}
- </div>
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
+    {
+        return view('components.alert2');
+    }
+}
