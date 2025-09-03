@@ -13,6 +13,17 @@ class Post extends Model
     //si no recibo el nombre de la tabla, laravel asume que es el plural del modelo
     protected $table = 'post';
 
+    //para manejo de fechas o casteos
+    protected function casts(): array
+    {
+        return [
+            'created_at' => 'datetime:d/m/Y',
+            'updated_at' => 'datetime:d/m/Y',
+            
+        ];
+    }
+
+    //para manipular atributos antes de guardar o despues de obtener
     protected function title(): Attribute
     {
         return Attribute::make(
