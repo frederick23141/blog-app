@@ -19,5 +19,7 @@ class PostSeeder extends Seeder
         $post->content = 'Contenido del post automatico';
         $post->categorie = 'Categoria del post automatico';
         $post->save();
+
+        Post::factory(20)->create();
     }
 }

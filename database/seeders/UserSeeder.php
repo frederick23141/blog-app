@@ -23,5 +23,8 @@ class UserSeeder extends Seeder
 
         //php artisan db:seed - to ejecute
         //php artisan migrate:fresh --seed - para borrar y crear todo de nuevo
+
+        //create user factory
+        User::factory(10)->create();
     }
 }
