@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PostSeeder::class,
         ]);
-        //php artisan db:seed - to ejecute
+
         //php artisan migrate:fresh --seed - para borrar y crear todo de nuevo
 
         
