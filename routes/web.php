@@ -10,6 +10,8 @@ use App\Models\Post;
 //como el metodo __invoke solo tiene una funcion, no es necesario especificarlo
 Route::get('/',  [HomeController::class, '__invoke']);
 
+//Route::get('/',  HomeController::class);
+
 Route::get('/posts', function () {
     return 'aca se muestran los posts';
 });
