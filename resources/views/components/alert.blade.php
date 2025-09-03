@@ -22,7 +22,7 @@
              # code...
              $class = 'text-gray-800  bg-gray-50 dark:bg-gray-800 dark:text-gray-400';
              break;
-         case 'default':
+         default:
              $class = 'text-blue-800  bg-blue-50 dark:bg-gray-800 dark:text-blue-400';
      }
  @endphp
