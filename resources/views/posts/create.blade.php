@@ -3,7 +3,8 @@
 
     @section('content')
         <h1>Aqui se mostraran el formulario para crear los posts con campos</h1>
-        <form action="/posts" method="POST">
+        <form action="{{route('posts.store')}}" method="POST">
+        {{-- <form action="/posts" method="POST"> --}}
             {{-- para crear formularios con token csrf --}}
             @csrf
             <label for="">

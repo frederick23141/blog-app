@@ -12,26 +12,24 @@ use App\Models\Post;
 Route::get('/',  [HomeController::class, '__invoke']);
 
 //Route::get('/',  HomeController::class);
-
-Route::get('/posts', [PostController::class, 'index']);
+//Route whit name ->name('name.dir')
+Route::get('/posts', [PostController::class, 'index']) ->name('posts.index');
 
 //crear rutas para los metodos HTTP
-Route::get('/posts/create', [PostController::class, 'create']);
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
 //para guardar un post - metodo post
-Route::post('/posts', [PostController::class, 'store']);
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 //para actualizar un post - metodo put o patch
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 
-Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 
-Route::put('/posts/{post}', [PostController::class, 'update']);
-
-Route::delete('/posts/{post}', [PostController::class, 'destroy']);
-
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 //valor opcional con el caracter ?
-Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 Route::get('/prueba', function () {
     $post = new Post;
