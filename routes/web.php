@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 
 //las rutas deben ser en orden evaluadas en orden lineal
@@ -12,20 +13,25 @@ Route::get('/',  [HomeController::class, '__invoke']);
 
 //Route::get('/',  HomeController::class);
 
-Route::get('/posts', function () {
-    return 'aca se muestran los posts';
-});
+Route::get('/posts', [PostController::class, 'index']);
 
 //crear rutas para los metodos HTTP
-Route::get('/posts/create',  function () {
-    return 'Aqui se muestra el formulario para crear un post';
-});
+Route::get('/posts/create', [PostController::class, 'create']);
+
+//para guardar un post - metodo post
+Route::post('/posts', [PostController::class, 'store']);
+
+//para actualizar un post - metodo put o patch
+
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+
+Route::put('/posts/{post}', [PostController::class, 'update']);
+
+Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 
 
 //valor opcional con el caracter ?
-Route::get('/posts/{post}', function ($post) {
-    return "Mostrando el post: {$post} ";
-});
+Route::get('/posts/{post}', [PostController::class, 'show']);
 
 Route::get('/prueba', function () {
     $post = new Post;

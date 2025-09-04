@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laravel 12 - post</title>
-</head>
-<body>
-    <h1>Mostrando el post {{$post}} </h1>
-</body>
-</html>
+<x-app-layout>
+    @section('title', 'Mostrando post')
+
+    @section('content')
+    <a href="/posts">Volver a posts</a>
+        <h1>Mostrando el post {{ $post->title }} </h1>
+        <p>
+            <b>Categoria :
+                {{ $post->categorie }}
+            </b>
+        </p>
+        <p>
+            <b>
+                Contenido:
+                {{ $post->content }}
+            </b>
+        </p>
+
+        <a href="/posts/{{$post->id}}/edit">Editar post</a>
+
+        <form action="/posts/{{$post->id}}" method="POST">
+             @csrf
+            @method('DELETE')
+           
+            <button type="submit">
+                Eliminar
+            </button>
+        </form>
+    @endsection
+</x-app-layout>

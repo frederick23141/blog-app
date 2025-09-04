@@ -11,7 +11,7 @@ class Post extends Model
     use HasFactory;
     //posts
     //si no recibo el nombre de la tabla, laravel asume que es el plural del modelo
-    protected $table = 'post';
+    //protected $table = 'posts';
 
     //para manejo de fechas o casteos
     protected function casts(): array
