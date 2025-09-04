@@ -13,5 +13,8 @@
                 </li>
             @endforeach
         </ul>
+
+        {{-- post links para poner las paginas asociadas del paginate --}}
+        {{ $posts->links() }}
     @endsection
 </x-app-layout>
