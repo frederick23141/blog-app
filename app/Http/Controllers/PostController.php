@@ -47,6 +47,14 @@ class PostController extends Controller
 
         $post->save(); */
 
+        //add validation to capture errors variable $errors in the view
+        $request->validate([
+            'title' => 'required|min:5|max:255',
+            'slug' => 'required|unique:posts',
+            'categorie' => 'required',
+            'content' => 'required',
+        ]);
+
         Post::create($request->all());
 
         return redirect()->route('posts.index');
@@ -67,12 +75,21 @@ class PostController extends Controller
 
         /*    $post = Post::find($post); */
 
-     /*    $post->title = $request->title;
+        /*    $post->title = $request->title;
         $post->slug = $request->slug;
         $post->categorie = $request->categorie;
         $post->content = $request->content;
 
         $post->save(); */
+
+        //add validation to capture errors variable $errors in the view
+        $request->validate([
+            'title' => 'required|min:5|max:255',
+            'slug' => "required|unique:posts,slug,{$post->id}",
+            'categorie' => 'required',
+            'content' => 'required',
+        ]);
+
 
         $post->update($request->all());
         return redirect()->route('posts.show', $post);

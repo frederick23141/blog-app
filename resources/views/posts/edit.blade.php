@@ -3,6 +3,19 @@
 
     @section('content')
         <h1>Aqui se mostraran el formulario para crear los posts con campos</h1>
+
+        @if ($errors->any())
+            <div>
+                <strong>Whoops!</strong> Hubo algunos problemas con su entrada.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+
+        @endif
+
         <form action="{{route('posts.update', $post)}}" method="POST">
             {{-- <form action="/posts/{{$post->id}}" method="POST"> --}}
                 {{-- para crear formularios con token csrf --}}
@@ -12,27 +25,27 @@
 
                 <label for="">
                     Titulo:
-                    <input type="text" name="title" value="{{$post->title}}">
+                    <input type="text" name="title" value="{{old('title', $post->title)}}">
                 </label>
                 <br>
                 <br>
                 <label for="">
                     Slug:
-                    <input type="text" name="slug" value="{{$post->slug}}">
+                    <input type="text" name="slug" value="{{old('slug', $post->slug)}}">
                 </label>
                 <br>
                 <br>
                 <label for="">
                     Categorie:
-                    <input type="text" name="categorie" value="{{$post->categorie}}">
+                    <input type="text" name="categorie" value="{{old('categorie', $post->categorie)}}">
                 </label>
                 <br>
                 <br>
                 <label for="">
                     content:
                     <textarea name="content" cols="30" rows="10" required>{{ old('content') }}>
-                            {{$post->content}}
-                        </textarea>
+                                    {{old('content', $post->content)}}
+                                </textarea>
                 </label>
                 <br>
                 <br>
