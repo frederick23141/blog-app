@@ -37,7 +37,7 @@ class PostController extends Controller
     {
         //dd($request->all()); 
         /* return request->all(); */
-        $post = new Post();
+        /*  $post = new Post();
 
         $post->title = $request->title;
         $post->slug = $request->slug;
@@ -45,7 +45,9 @@ class PostController extends Controller
         $post->content = $request->content;
         
 
-        $post->save();
+        $post->save(); */
+
+        Post::create($request->all());
 
         return redirect()->route('posts.index');
     }
@@ -65,12 +67,14 @@ class PostController extends Controller
 
         /*    $post = Post::find($post); */
 
-        $post->title = $request->title;
+     /*    $post->title = $request->title;
         $post->slug = $request->slug;
         $post->categorie = $request->categorie;
         $post->content = $request->content;
 
-        $post->save();
+        $post->save(); */
+
+        $post->update($request->all());
         return redirect()->route('posts.show', $post);
     }
 

@@ -43,4 +43,15 @@ class Post extends Model
     {
         return 'slug';
     }
+    //to use fields for mass assignment
+    //to use Post::create($request->all());
+    protected $fillable = [
+        'title',
+        'slug',
+        'categorie',
+        'content'
+    ];
+
+    //protected $guarded = ['id']; //except id
+    protected $guarded = ['is_active',]; //all fields are mass assignable
 }
