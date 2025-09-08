@@ -19,6 +19,7 @@ class PostFactory extends Factory
         return [
             //
             'title' => $this->faker->sentence(),
+            'slug' => $this->faker->slug(),
             'content' => $this->faker->text(200),
             'categorie' => $this->faker->word(),
             'created_at' => now(),

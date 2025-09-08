@@ -11,7 +11,7 @@ use App\Models\Post;
 //como el metodo __invoke solo tiene una funcion, no es necesario especificarlo
 Route::get('/',  [HomeController::class, '__invoke']);
 
-//Route::get('/',  HomeController::class);
+/* //Route::get('/',  HomeController::class);
 //Route whit name ->name('name.dir')
 Route::get('/posts', [PostController::class, 'index']) ->name('posts.index');
 
@@ -30,46 +30,19 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 
 //valor opcional con el caracter ?
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-
-Route::get('/prueba', function () {
-    $post = new Post;
-
-    //CREAR UN REGISTRO
-
-    //$post->title = 'Titulo e prueba 5';
-    //$post->content = 'Contenido del post 5';
-    //$post->categorie = 'Categoria del post 5';
-    //$post->save();
+ */
 
 
-    //Buscar un registro por id
-
-    //$post = Post::find(2);
-
-    //Buscar un registro por campo especifico PARA ACTUALIZAR
-
-    //$post = Post::where('title', 'Titulo e prueba 1')->first();
-    //$post->categorie = 'Categoria actualizada del post 2';
-    //$post->save();
-    //return $post;
-
-    //BUSCAR VARIOS REGISTROS
-    //$post = Post::all();
+//route whit resource , call to resource  to create crud routes from controller, this line replace all routes for posts and is more scalable and is comented the other routes for posts
+Route::resource('posts', PostController::class);
+// can be used with except ->except('destroy') or ->except(['destroy','index'])
+//Route::resource('posts', PostController::class)->except(['destroy']);
+//can be used with name for scalability
+//Route::resource('posts', PostController::class)->names('articules');
 
 
-    //buscar por algunos criterios
-    $post = Post::where('id','>=' ,'1')
-    ->orderBy('id','desc')
-    ->select('id','title','categorie')
-    ->get();
-
-    //ELIMINAR UN REGISTRO
-    //$post = Post::find(3);
-    //$post->delete();
-
-    return $post;
-
-});
+//route whit apiresource
+/* Route::apiResource('posts', PostController::class); */
 
 
 

@@ -19,7 +19,7 @@ class Post extends Model
         return [
             'created_at' => 'datetime:d/m/Y',
             'updated_at' => 'datetime:d/m/Y',
-            
+
         ];
     }
 
@@ -36,5 +36,11 @@ class Post extends Model
                 return ucfirst($value);
             }
         );
+    }
+
+    //to use with route model binding and change the default id to slug
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

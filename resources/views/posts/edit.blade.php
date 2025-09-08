@@ -17,6 +17,12 @@
                 <br>
                 <br>
                 <label for="">
+                    Slug:
+                    <input type="text" name="slug" value="{{$post->slug}}">
+                </label>
+                <br>
+                <br>
+                <label for="">
                     Categorie:
                     <input type="text" name="categorie" value="{{$post->categorie}}">
                 </label>
@@ -25,8 +31,8 @@
                 <label for="">
                     content:
                     <textarea name="content" cols="30" rows="10" required>{{ old('content') }}>
-                        {{$post->content}}
-                    </textarea>
+                            {{$post->content}}
+                        </textarea>
                 </label>
                 <br>
                 <br>
