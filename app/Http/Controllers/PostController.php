@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use function Pest\Laravel\post;
@@ -33,7 +34,8 @@ class PostController extends Controller
     }
 
     //store new post
-    public function store(Request $request)
+    //change Request $request to StorePostRequest $request for validation
+    public function store(StorePostRequest $request)
     {
         //dd($request->all()); 
         /* return request->all(); */
@@ -48,13 +50,13 @@ class PostController extends Controller
         $post->save(); */
 
         //add validation to capture errors variable $errors in the view
-        $request->validate([
+     /*    $request->validate([
             'title' => 'required|min:5|max:255',
             'slug' => 'required|unique:posts',
             'categorie' => 'required',
             'content' => 'required',
         ]);
-
+ */
         Post::create($request->all());
 
         return redirect()->route('posts.index');
