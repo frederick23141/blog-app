@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PostCreatedMail;
 use function Pest\Laravel\post;
 
 class PostController extends Controller
@@ -50,14 +52,18 @@ class PostController extends Controller
         $post->save(); */
 
         //add validation to capture errors variable $errors in the view
-     /*    $request->validate([
+        /*    $request->validate([
             'title' => 'required|min:5|max:255',
             'slug' => 'required|unique:posts',
             'categorie' => 'required',
             'content' => 'required',
         ]);
  */
-        Post::create($request->all());
+        $post =   Post::create($request->all());
+
+
+        //config email notification here
+        Mail::to('federico.toro@corsan.com.co')->send(new PostCreatedMail($post));
 
         return redirect()->route('posts.index');
     }
