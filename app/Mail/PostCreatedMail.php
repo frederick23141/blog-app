@@ -42,7 +42,7 @@ class PostCreatedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email.post_created',
+            markdown: 'email.post_created',
         );
     }
 
